@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>TrailerShuffle</title>
+  <meta name="description" content="Discover Movies">
+  <meta name="author" content="Cristopher Huerta">
+  <link rel="stylesheet" type="text/css" href="pagestyle.css">
+  <script type = "text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+  </script>
+  <script type = "text/javascript" language = "javascript">
+         $(document).ready(function() {
+            $('.button').click(function(event){
+			   var randPage = Math.floor((Math.random() * 40));
+			   var randResult = Math.floor((Math.random() * 20));
+			   $('#logo').css('opacity','1.0');
+			   $('#footer').css('opacity','0.3');
+               $.getJSON('https://api.themoviedb.org/3/discover/movie?api_key=79565adcd9865cd8ea0038dfbec4e8bb&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page='
+			   + randPage, function(jd) {
+				  $('#info').html('<img src="https://image.tmdb.org/t/p/w185' + jd.results[randResult].poster_path + '" align="left" alt="Poster">');
+                  $('#info').append('Name: ' + jd.results[randResult].title);
+                  $('#info').append('<p> Rating : ' + jd.results[randResult].vote_average + '/10</p>');
+				  $('#info').append('<p> ' + jd.results[randResult].overview + '</p>');
+				  $('body').css('background-image','url(https://image.tmdb.org/t/p/original' + jd.results[randResult].backdrop_path+ ')');
+				  $.getJSON('https://api.themoviedb.org/3/movie/' + jd.results[randResult].id + '/videos?api_key=79565adcd9865cd8ea0038dfbec4e8bb&language=en-US', function(jt) {
+					$('#trailerDisplay').html('<iframe id="player" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/' + jt.results[0].key + '?autoplay=1" frameborder="0"></iframe>');
+				  });
+               });
+            });
+		 });
+      </script>
+</head>
+
+<body>
+	<div id = "buttonWrapper">
+		<div id="logo" style="opacity:0.0;">
+			<img src="logo.png" align="left" width="300px" height="40px">
+		</div>
+		<div class="button">GET TRAILER</div>
+	</div>
+	<div id = "trailerDisplay">
+		<p style="font-family:verdana;font-size:300%;color:white;">Welcome to <img src="logo.png" width="20%" height="20%"></p>
+    </div>
+	<div style="text-align: center;">
+		<div id="info">
+
+		</div>
+	</div>
+	<div style="height:50px;position:fixed;bottom:0;color:white;padding:5px 0px;">
+		<p id="footer" style="background-color:black;opacity:0.0;display:inline-block;">
+		Metadata Provided By TMDB<br>
+		Created By Cristopher Huerta</p>
+	</div>
+</body>
+</html>
