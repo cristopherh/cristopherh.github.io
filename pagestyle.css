@@ -7,7 +7,7 @@ body {
 
 #buttonWrapper{
 	width: 100%;
-	height: 50px;
+	height: 5%;
 	padding: 15px 15px;
 	background-color: black;
 	position: fixed;
@@ -25,7 +25,7 @@ body {
 	cursor: pointer;
 	font-family: verdana;
 	position:fixed;
-    height: 15px;
+    height: 2%;
     width: 150px;
     left:43%;
     top:15px;
@@ -43,11 +43,12 @@ body {
 	color: white;
 	background-color: black;
 	opacity: 0.9;
+	margin-bottom: 50px;
 }
 	
 #trailerDisplay{
 	text-align: center;
-	margin-top: 80px;
+	margin-top: 70px;
 	padding: 10px 10px;
 	height: 390px;
 }
