@@ -20,7 +20,7 @@
 			   $('#footer').css('opacity','0.3');
                $.getJSON('https://api.themoviedb.org/3/discover/movie?api_key=79565adcd9865cd8ea0038dfbec4e8bb&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page='
 			   + randPage, function(jd) {
-				  $('#info').html('<img src="https://image.tmdb.org/t/p/w185' + jd.results[randResult].poster_path + '" align="left" alt="Poster">');
+				  $('#info').html('<img src="https://image.tmdb.org/t/p/w185' + jd.results[randResult].poster_path + '" align="left" vertical-align="middle" alt="Poster">');
                   $('#info').append('Title: ' + jd.results[randResult].title);
                   $('#info').append('<p> Rating : ' + jd.results[randResult].vote_average + '/10</p>');
 				  $('#info').append('<p> ' + jd.results[randResult].overview + '</p>');
@@ -42,7 +42,7 @@
 		<div class="button">GET TRAILER</div>
 	</div>
 	<div id = "trailerDisplay">
-		<img src="logo.png" width="270px" height="38px">
+		<p style="font-family:verdana;font-size:300%;color:white;">Welcome to <img src="logo.png" width="270px" height="38px"></p>
     </div>
 	<div style="text-align: center;">
 		<div id="info">
