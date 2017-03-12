@@ -24,13 +24,19 @@
                   $('#poster').css('padding-right', '10px');
 				  $('#info').append('<p style="text-indent:10px;color:#1B96FE;">Title: <span style="color:white;">' + jd.results[randResult].title + '</span></p>');
 				  $('#info').append('<p id="rating" style="text-indent:10px;color:#1B96FE;">Rating : </p>');
-				  for(i = 0; i < (jd.results[randResult].vote_average); i++){
-					$('#rating').append('<img src="images/star_full.png" width="20px" height="20px">');
+				  if((jd.results[randResult].vote_average) == 0){
+					$('#rating').append('<span style="color:white;">n/a</span>');
 				  }
-				  for(i = 0; i < (10 - jd.results[randResult].vote_average); i++){
-					$('#rating').append('<img src="images/star_none.png" width="20px" height="20px">');
+				  else{
+					for(i = 0; i < (Math.floor(jd.results[randResult].vote_average + 0.5)); i++){
+						$('#rating').append('<img src="images/star_full.png" width="20px" height="20px">');
+					}
+					for(i = 0; i < (10 - Math.floor(jd.results[randResult].vote_average + 0.5)); i++){
+						$('#rating').append('<img src="images/star_none.png" width="20px" height="20px">');
+					}
+					$('#rating').append('<span style="color:white;">' + jd.results[randResult].vote_average + '/10</span>');
 				  }
-				  $('#info').append('<p> ' + jd.results[randResult].overview + '</p>');
+				  $('#overview').html('<p style="text-indent:10px;color:#1B96FE;">Description<br><span style="color:white;">' + jd.results[randResult].overview + '</span></p>');
 				  $('body').css('background-image','url(https://image.tmdb.org/t/p/original' + jd.results[randResult].backdrop_path+ ')');
 				  $('body').css('background-size','cover');
 				  $.getJSON('https://api.themoviedb.org/3/movie/' + jd.results[randResult].id + '/videos?api_key=79565adcd9865cd8ea0038dfbec4e8bb&language=en-US', function(jt) {
@@ -54,6 +60,11 @@
     </div>
 	<div style="text-align: center;">
 		<div id="info">
+
+		</div>
+	</div>
+	<div style="text-align: center;">
+		<div id="overview">
 
 		</div>
 	</div>
