@@ -1,6 +1,6 @@
 body {
     background-color: black;
-	background-size: 100% 100%;
+	background-size: cover;
 	background-repeat: no-repeat;
 	margin: 0;
 }
@@ -15,6 +15,13 @@ body {
 	left: 0;
 }
 
+logo{
+	position:fixed;
+    left:55%;
+    top:15px;
+	padding: 1px 1px;
+}
+
 .button{
 	color: white;
 	background-color: #1B96FE;
@@ -27,7 +34,7 @@ body {
 	position:fixed;
     height: 15px;
     width: 150px;
-    left:43%;
+    left:45%;
     top:15px;
 }
 
@@ -50,7 +57,7 @@ body {
 	text-align: center;
 	margin-top: 70px;
 	padding: 10px 10px;
-	height: 375px;
+	height: 422px;
 }
 
 
