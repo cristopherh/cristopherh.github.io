@@ -13,38 +13,45 @@
   </script>
   <script type = "text/javascript" language = "javascript">
          $(document).ready(function() {
-            $('.button').click(function(event){
-			   var randPage = Math.floor((Math.random() * 40));
-			   var randResult = Math.floor((Math.random() * 20));
-			   $('#logo').css('opacity','1.0');
-			   $('#footer').css('opacity','0.3');
-               $.getJSON('https://api.themoviedb.org/3/discover/movie?api_key=79565adcd9865cd8ea0038dfbec4e8bb&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page='
-			   + randPage, function(jd) {
-				  $('#info').html('<div id="poster"><img src="https://image.tmdb.org/t/p/w185' + jd.results[randResult].poster_path + '" align="left" vertical-align="middle" alt="Poster"></div>');
-                  $('#poster').css('padding-right', '10px');
-				  $('#info').append('<p style="text-indent:10px;color:#1B96FE;">Title: <span style="color:white;">' + jd.results[randResult].title + '</span></p>');
-				  $('#info').append('<p id="rating" style="text-indent:10px;color:#1B96FE;">Rating : </p>');
-				  if((jd.results[randResult].vote_average) == 0){
-					$('#rating').append('<span style="color:white;">n/a</span>');
-				  }
-				  else{
-					for(i = 0; i < (Math.floor(jd.results[randResult].vote_average + 0.5)); i++){
-						$('#rating').append('<img src="images/star_full.png" width="20px" height="20px">');
-					}
-					for(i = 0; i < (10 - Math.floor(jd.results[randResult].vote_average + 0.5)); i++){
-						$('#rating').append('<img src="images/star_none.png" width="20px" height="20px">');
-					}
-					$('#rating').append('<span style="color:white;">' + jd.results[randResult].vote_average + '/10</span>');
-				  }
-				  $('#overview').html('<p style="text-indent:10px;color:#1B96FE;">Description<br><span style="color:white;">' + jd.results[randResult].overview + '</span></p>');
-				  $('body').css('background-image','url(https://image.tmdb.org/t/p/original' + jd.results[randResult].backdrop_path+ ')');
-				  $('body').css('background-size','cover');
-				  $.getJSON('https://api.themoviedb.org/3/movie/' + jd.results[randResult].id + '/videos?api_key=79565adcd9865cd8ea0038dfbec4e8bb&language=en-US', function(jt) {
-					$('#trailerDisplay').html('<iframe id="player" type="text/html" width="750" height="422" src="https://www.youtube.com/embed/' + jt.results[0].key + '?autoplay=1&iv_load_policy=3" frameborder="0"></iframe>');
-				  });
-               });
+			$('.button').click(function(event){
+				getMovie();
+            });
+            $('.button2').click(function(event){
+				getMovie();
             });
 		 });
+		function getMovie(){
+			var randPage = Math.floor((Math.random() * 40));
+			var randResult = Math.floor((Math.random() * 20));
+		    $('#logo').css('opacity','1.0');
+	     	$('#footer').css('opacity','0.3');
+			$('.button2').css('visibility','visible');
+            $.getJSON('https://api.themoviedb.org/3/discover/movie?api_key=79565adcd9865cd8ea0038dfbec4e8bb&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page='
+			+ randPage, function(jd) {
+			$('#info').html('<div id="poster"><img src="https://image.tmdb.org/t/p/w185' + jd.results[randResult].poster_path + '" align="left" vertical-align="middle" alt="Poster"></div>');
+            $('#poster').css('padding-right', '10px');
+			$('#info').append('<p style="color:#1B96FE;">Title: <span style="color:white;">' + jd.results[randResult].title + '</span></p>');
+			$('#info').append('<p id="rating" style="color:#1B96FE;">Rating : </p>');
+			if((jd.results[randResult].vote_average) == 0){
+				$('#rating').append('<span style="color:white;">n/a</span>');
+			}
+			else{
+				for(i = 0; i < (Math.floor(jd.results[randResult].vote_average + 0.5)); i++){
+					$('#rating').append('<img src="images/star_full.png" width="20px" height="20px">');
+				}
+				for(i = 0; i < (10 - Math.floor(jd.results[randResult].vote_average + 0.5)); i++){
+					$('#rating').append('<img src="images/star_none.png" width="20px" height="20px">');
+				}
+				$('#rating').append('<span style="color:white;">' + jd.results[randResult].vote_average + '/10</span>');
+				}
+				$('#overview').html('<p style="text-indent:10px;color:#1B96FE;">Description<br><span style="color:white;">' + jd.results[randResult].overview + '</span></p>');
+				$('body').css('background-image','url(https://image.tmdb.org/t/p/original' + jd.results[randResult].backdrop_path+ ')');
+				$('body').css('background-size','cover');
+				$.getJSON('https://api.themoviedb.org/3/movie/' + jd.results[randResult].id + '/videos?api_key=79565adcd9865cd8ea0038dfbec4e8bb&language=en-US', function(jt) {
+				$('#trailerDisplay').html('<iframe id="player" type="text/html" width="750" height="422" src="https://www.youtube.com/embed/' + jt.results[0].key + '?autoplay=1&iv_load_policy=3" frameborder="0"></iframe>');
+				});
+            });
+		}
       </script>
 </head>
 
@@ -53,10 +60,11 @@
 		<div id="logo" style="opacity:0.0;">
 			<img src="logo.png" position="fixed" align="left" width="270px" height="38px">
 		</div>
-		<div class="button">GET TRAILER</div>
+		<div class="button2">Get Trailer!</div>
 	</div>
 	<div id = "trailerDisplay">
 		<p style="font-family:verdana;font-size:300%;color:white;">Welcome to <img src="logo.png" width="270px" height="38px"></p>
+		<div class="button">Get Trailer!</div>
     </div>
 	<div style="text-align: center;">
 		<div id="info">

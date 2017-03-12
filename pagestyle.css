@@ -1,5 +1,5 @@
 body {
-    background-color: cadetblue;
+    background-color: black;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -25,28 +25,49 @@ logo{
 
 .button{
 	color: white;
-	background-color: #1B96FE;
 	text-align: center;
 	display: inline-block;
 	padding: 15px 10px;
-	border-radius: 12px;
+	border-radius: 20px;
 	cursor: pointer;
-	font-family: verdana;
-	position:fixed;
-    height: 15px;
-    width: 150px;
-    left:43%;
-    top:15px;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+    height: 30px;
+    width: 250px;
+	font-size: 30px;
+	background-image: -webkit-gradient(linear, right top, right bottom, color-stop(0%, #1578CB), color-stop(100%, #1B96FE));
 }
 
 .button:active{
 	background-color: #3271e7;
 }
 
+.button2{
+	color: white;
+	background-color: #1B96FE;
+	text-align: center;
+	display: inline-block;
+	padding: 15px 10px;
+	border-radius: 12px;
+	cursor: pointer;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	position:fixed;
+    height: 15px;
+    width: 150px;
+    left:44%;
+    top:10px;
+	visibility: hidden;
+	background-image: -webkit-gradient(linear, right top, right bottom, color-stop(0%, #1578CB), color-stop(100%, #1B96FE));
+}
+
+.button2:active{
+	background-color: #3271e7;
+}
+
 #info{
 	text-align: left;
+	text-indent: 10px;
 	padding-top: 10px;
-	padding-left: 10px;
+	padding-left: 20px;
 	padding-right: 20px;
 	width: 700px;
 	display: inline-block;
