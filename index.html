@@ -21,12 +21,12 @@
                $.getJSON('https://api.themoviedb.org/3/discover/movie?api_key=79565adcd9865cd8ea0038dfbec4e8bb&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page='
 			   + randPage, function(jd) {
 				  $('#info').html('<img src="https://image.tmdb.org/t/p/w185' + jd.results[randResult].poster_path + '" align="left" alt="Poster">');
-                  $('#info').append('Name: ' + jd.results[randResult].title);
+                  $('#info').append('Title: ' + jd.results[randResult].title);
                   $('#info').append('<p> Rating : ' + jd.results[randResult].vote_average + '/10</p>');
 				  $('#info').append('<p> ' + jd.results[randResult].overview + '</p>');
 				  $('body').css('background-image','url(https://image.tmdb.org/t/p/original' + jd.results[randResult].backdrop_path+ ')');
 				  $.getJSON('https://api.themoviedb.org/3/movie/' + jd.results[randResult].id + '/videos?api_key=79565adcd9865cd8ea0038dfbec4e8bb&language=en-US', function(jt) {
-					$('#trailerDisplay').html('<iframe id="player" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/' + jt.results[0].key + '?autoplay=1&iv_load_policy=3" frameborder="0"></iframe>');
+					$('#trailerDisplay').html('<iframe id="player" type="text/html" width="1280" height="770" src="https://www.youtube.com/embed/' + jt.results[0].key + '?autoplay=1&iv_load_policy=3" frameborder="0"></iframe>');
 				  });
                });
             });
