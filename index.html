@@ -21,7 +21,7 @@
             });
 		 });
 		function getMovie(){
-			var randPage = Math.floor((Math.random() * 40));
+			var randPage = Math.floor((Math.random() * 50));
 			var randResult = Math.floor((Math.random() * 20));
 		    $('#logo').css('opacity','1.0');
 	     	$('#footer').css('opacity','0.3');
@@ -29,7 +29,7 @@
             $.getJSON('https://api.themoviedb.org/3/discover/movie?api_key=79565adcd9865cd8ea0038dfbec4e8bb&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page='
 			+ randPage, function(jd) {
 				$.getJSON('https://api.themoviedb.org/3/movie/' + jd.results[randResult].id + '/videos?api_key=79565adcd9865cd8ea0038dfbec4e8bb&language=en-US', function(jt) {
-					$('#trailerDisplay').html('<iframe id="player" type="text/html" width="750" height="422" src="https://www.youtube.com/embed/' + jt.results[0].key + '?autoplay=1&iv_load_policy=3" frameborder="0"></iframe>');
+					$('#trailerDisplay').html('<iframe id="player" type="text/html" width="750" height="422" src="https://www.youtube.com/embed/' + jt.results[0].key + '?autoplay=1&iv_load_policy=3" allowfullscreen="allowfullscreen" frameborder="0"></iframe>');
 					$('#info').html('<div id="poster"><img src="https://image.tmdb.org/t/p/w185' + jd.results[randResult].poster_path + '" align="left" vertical-align="middle" alt="Poster"></div>');
 					$('#poster').css('padding-right', '10px');
 					$('#info').append('<p style="color:#1B96FE;">Title: <span style="color:white;">' + jd.results[randResult].title + '</span></p>');
