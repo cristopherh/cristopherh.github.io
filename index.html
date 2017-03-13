@@ -26,6 +26,8 @@
 		    $('#logo').css('opacity','1.0');
 	     	$('#footer').css('opacity','0.3');
 			$('.button2').css('visibility','visible');
+			$('#info').css('visibility','visible');
+			$('#buttonWrapper').css('visibility','visible');
             $.getJSON('https://api.themoviedb.org/3/discover/movie?api_key=79565adcd9865cd8ea0038dfbec4e8bb&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page='
 			+ randPage, function(jd) {
 				$.getJSON('https://api.themoviedb.org/3/movie/' + jd.results[randResult].id + '/videos?api_key=79565adcd9865cd8ea0038dfbec4e8bb&language=en-US', function(jt) {
