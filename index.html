@@ -28,29 +28,30 @@
 			$('.button2').css('visibility','visible');
             $.getJSON('https://api.themoviedb.org/3/discover/movie?api_key=79565adcd9865cd8ea0038dfbec4e8bb&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page='
 			+ randPage, function(jd) {
-			$('#info').html('<div id="poster"><img src="https://image.tmdb.org/t/p/w185' + jd.results[randResult].poster_path + '" align="left" vertical-align="middle" alt="Poster"></div>');
-            $('#poster').css('padding-right', '10px');
-			$('#info').append('<p style="color:#1B96FE;">Title: <span style="color:white;">' + jd.results[randResult].title + '</span></p>');
-			$('#info').append('<p id="rating" style="color:#1B96FE;">Rating : </p>');
-			if((jd.results[randResult].vote_average) == 0){
-				$('#rating').append('<span style="color:white;">n/a</span>');
-			}
-			else{
-				for(i = 0; i < (Math.floor(jd.results[randResult].vote_average + 0.5)); i++){
-					$('#rating').append('<img src="images/star_full.png" width="20px" height="20px">');
-				}
-				for(i = 0; i < (10 - Math.floor(jd.results[randResult].vote_average + 0.5)); i++){
-					$('#rating').append('<img src="images/star_none.png" width="20px" height="20px">');
-				}
-				$('#rating').append('<span style="color:white;">' + jd.results[randResult].vote_average + '/10</span>');
-				}
-				$('#overview').html('<p style="text-indent:10px;color:#1B96FE;">Description<br><span style="color:white;">' + jd.results[randResult].overview + '</span></p>');
-				$('body').css('background-image','url(https://image.tmdb.org/t/p/original' + jd.results[randResult].backdrop_path+ ')');
-				$('body').css('background-size','cover');
 				$.getJSON('https://api.themoviedb.org/3/movie/' + jd.results[randResult].id + '/videos?api_key=79565adcd9865cd8ea0038dfbec4e8bb&language=en-US', function(jt) {
-				$('#trailerDisplay').html('<iframe id="player" type="text/html" width="750" height="422" src="https://www.youtube.com/embed/' + jt.results[0].key + '?autoplay=1&iv_load_policy=3" frameborder="0"></iframe>');
+					$('#trailerDisplay').html('<iframe id="player" type="text/html" width="750" height="422" src="https://www.youtube.com/embed/' + jt.results[0].key + '?autoplay=1&iv_load_policy=3" frameborder="0"></iframe>');
+					$('#info').html('<div id="poster"><img src="https://image.tmdb.org/t/p/w185' + jd.results[randResult].poster_path + '" align="left" vertical-align="middle" alt="Poster"></div>');
+					$('#poster').css('padding-right', '10px');
+					$('#info').append('<p style="color:#1B96FE;">Title: <span style="color:white;">' + jd.results[randResult].title + '</span></p>');
+					$('#info').append('<p style="color:#1B96FE;">Release Date: <span style="color:white;">' + jd.results[randResult].release_date + '</span></p>');
+					$('#info').append('<p id="rating" style="color:#1B96FE;">Rating : </p>');
+					if((jd.results[randResult].vote_average) == 0){
+						$('#rating').append('<span style="color:white;">n/a</span>');
+					}
+					else{
+						for(i = 0; i < (Math.floor(jd.results[randResult].vote_average + 0.5)); i++){
+							$('#rating').append('<img src="images/star_full.png" width="20px" height="20px">');
+						}
+						for(i = 0; i < (10 - Math.floor(jd.results[randResult].vote_average + 0.5)); i++){
+							$('#rating').append('<img src="images/star_none.png" width="20px" height="20px">');
+						}
+						$('#rating').append('<span style="color:white;">' + jd.results[randResult].vote_average + '/10</span>');
+					}
+					$('#overview').html('<p style="text-indent:10px;color:#1B96FE;">Description<br><span style="color:white;">' + jd.results[randResult].overview + '</span></p>');
+					$('body').css('background-image','url(https://image.tmdb.org/t/p/original' + jd.results[randResult].backdrop_path+ ')');
+					$('body').css('background-size','cover');
 				});
-            });
+			});
 		}
       </script>
 </head>
