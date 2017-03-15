@@ -39,21 +39,27 @@
 					$('#info').append('<p style="color:#1B96FE;">Title: <span style="color:white;">' + jd.results[randResult].title + '</span></p>');
 					$('#info').append('<p style="color:#1B96FE;">Release Date: <span style="color:white;">' + jd.results[randResult].release_date + '</span></p>');
 					$('#info').append('<p id="rating" style="color:#1B96FE;">Rating : </p>');
-					if((jd.results[randResult].vote_average) == 0){
-						$('#rating').append('<span style="color:white;">n/a</span>');
-					}
-					else{
-						for(i = 0; i < (Math.floor(jd.results[randResult].vote_average + 0.5)); i++){
-							$('#rating').append('<img src="images/star_full.png" width="20px" height="20px">');
-						}
-						for(i = 0; i < (10 - Math.floor(jd.results[randResult].vote_average + 0.5)); i++){
-							$('#rating').append('<img src="images/star_none.png" width="20px" height="20px">');
-						}
-						$('#rating').append('<span style="color:white;">' + jd.results[randResult].vote_average + '/10</span>');
-					}
-					$('#overview').html('<p style="text-indent:10px;color:#1B96FE;">Description<br><span style="color:white;">' + jd.results[randResult].overview + '</span></p>');
+					$('#overview').html('<p style="text-indent:10px;color:#1B96FE;">Plot<br><span style="color:white;">' + jd.results[randResult].overview + '</span></p>');
 					$('body').css('background-image','url(https://image.tmdb.org/t/p/original' + jd.results[randResult].backdrop_path+ ')');
 					$('body').css('background-size','cover');
+					$.getJSON('https://api.themoviedb.org/3/movie/' + jd.results[randResult].id + '?api_key=79565adcd9865cd8ea0038dfbec4e8bb', function(jo) {
+						$.getJSON('https://www.omdbapi.com/?i=' + jo.imdb_id, function(ji) {
+							if((ji.imdbRating) == 0){
+								$('#rating').append('<span style="color:white;">n/a</span>');
+							}
+							else{
+								for(i = 0; i < (Math.floor(ji.imdbRating + 0.5)); i++){
+									$('#rating').append('<img src="images/star_full.png" width="20px" height="20px">');
+								}
+								for(i = 0; i < (10 - Math.floor(ji.imdbRating + 0.5)); i++){
+								$('#rating').append('<img src="images/star_none.png" width="20px" height="20px">');
+								}
+								$('#rating').append('<span style="color:white;">' + ji.imdbRating + '/10</span>');
+							}
+							$('#info').append('<p style="color:#1B96FE;">Cast: <span style="color:white;">' + ji.Actors + '</span></p>');
+							$('#info').append('<p style="color:#1B96FE;">Director: <span style="color:white;">' + ji.Director + '</span></p>');
+						});
+					});
 				});
 			});
 		}
