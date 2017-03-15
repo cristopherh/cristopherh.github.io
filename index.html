@@ -23,8 +23,10 @@
 		function getMovie(){
 			var randPage = Math.floor((Math.random() * 50));
 			var randResult = Math.floor((Math.random() * 20));
-		    $('#logo').css('opacity','1.0');
+		    $('#logo').css('visibility','visible');
 	     	$('#footer').css('opacity','0.3');
+			$('.button').css('visibility','hidden');
+			$('#welcome').css('visibility','hidden');
 			$('.button2').css('visibility','visible');
 			$('#info').css('visibility','visible');
 			$('#buttonWrapper').css('visibility','visible');
@@ -60,13 +62,13 @@
 
 <body>
 	<div id = "buttonWrapper">
-		<div id="logo" style="opacity:0.0;">
+		<div id="logo">
 			<img src="logo.png" position="fixed" align="left" width="270px" height="38px">
 		</div>
 		<div class="button2">Get Trailer!</div>
 	</div>
 	<div id = "trailerDisplay">
-		<p style="font-family:verdana;font-size:300%;color:white;">Welcome to <img src="logo.png" width="270px" height="38px"></p>
+		<br><br><br><img id="welcome" src="images/welcome.png" width="700px" height="50px"><br><br><br><br>
 		<div class="button">Get Trailer!</div>
     </div>
 	<div style="text-align: center;">

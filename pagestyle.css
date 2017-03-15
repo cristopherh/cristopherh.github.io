@@ -23,6 +23,7 @@ logo{
     left:57%;
     top:15px;
 	padding: 1px 1px;
+	visibility: hidden;
 }
 
 .button{
