@@ -43,7 +43,7 @@
 					$('body').css('background-image','url(https://image.tmdb.org/t/p/original' + jd.results[randResult].backdrop_path+ ')');
 					$('body').css('background-size','cover');
 					$.getJSON('https://api.themoviedb.org/3/movie/' + jd.results[randResult].id + '?api_key=79565adcd9865cd8ea0038dfbec4e8bb', function(jo) {
-						$.getJSON('https://www.omdbapi.com/?i=' + jo.imdb_id, function(ji) {
+						$.getJSON('https://www.omdbapi.com/?i=' + jo.imdb_id + '&apikey=e6c8b98', function(ji) {
 							if((ji.imdbRating) == 0){
 								$('#rating').append('<span style="color:white;">n/a</span>');
 							}
